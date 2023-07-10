@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Shopping List</title>
+    
+
+</head>
+<body>
+    <style>
+        body{
+    font-family: Bradley Hand, cursive	;
+    background-color: rgb(255, 221, 0);
+    text-align: center;
+}
+#text{
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid black;
+    outline: none;
+    font-family: Bradley Hand, cursive;
+    font-size: large;
+}
+h1{
+    font-size: 50px;
+}
+button{
+    background-color: rgb(46, 116, 118);
+    border: none;
+    color: rgb(255, 221, 0);
+    border-radius: 10px;
+    height: 25px;
+    width: 50px;
+    cursor: pointer;
+}
+img{
+    cursor: pointer;
+}
+h2{
+    cursor: pointer;
+}
+div{
+    margin-top: 10px;
+    font-size: 30px;
+    transition: all .3;
+}
+    </style>
+    <h1>Shopping List</h1>
+    <div class="div">
+        <img src="pen.png" id="pen">
+<input type="text" id="text">
+<button onclick="add()">Add</button>
+<div id="allIt"></div>
+</div>
+<script>
+    const text = document.getElementById('text')
+const pen = document.getElementById('pen')
+const allIt = document.getElementById('allIt')
+
+pen.addEventListener('click', function(){
+allIt.innerHTML = ""
+})
+
+text.addEventListener('keydown', function(event){
+    if(event.key == 'Enter'){
+        add()
+    }
+})
+
+function add() {
+let div = document.createElement('div')
+div.innerHTML = '- ' + text.value
+document.body.append(div)
+text.value = ""
+
+div.addEventListener('click', function() {
+    div.style.textDecoration = 'line-through'
+
+    if (div.style.textDecoration == 'line-through') {
+        div.style.color = 'rgba(0, 0, 0, .7)'
+    }
+})
+allIt.insertAdjacentElement('beforeend', div)
+}
+
+
+</script>
+</body>
+</html>
